@@ -1,0 +1,25 @@
+{
+  "name": "com.weston-wright.dither-urp",
+  "description": "Post processing effect that dithers the screen",
+  "version": "1.0.0",
+  "unity": "2021.3",
+  "unityRelease": "3f1",
+  "displayName": "Dither URP",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "12.0.0",
+    "com.weston-wright.scriptable-renderer-helpers-urp": "1.0.0"
+  },
+  "keywords": [
+    "post-processing",
+    "dither",
+    "dithering",
+    "blending",
+    "pixel",
+    "pixelated",
+    "urp"
+  ],
+  "author": {
+    "name": "Weston Wright",
+    "url": "https://github.com/westonwright"
+  }
+}
