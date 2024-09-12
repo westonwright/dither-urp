@@ -16,7 +16,8 @@ class DitherSettings
         _DownsampleFilterMode = other._DownsampleFilterMode;
 
     }
-    [SerializeField, Range(0.0f, 10.0f)]
+
+    [SerializeField, Range(0.0f, 16.0f)]
     float _Strength = .05f;
     public float Strength
     {
@@ -25,6 +26,15 @@ class DitherSettings
         //set => _Strength = value;
 
     }
+
+    [SerializeField, Range(0.0f, 16.0f)]
+    float _Brightness = 1.5f;
+    public float Brightness
+    {
+        get => _Brightness;
+        set => _Brightness = Mathf.Clamp(value, 0.0f, 16.0f);
+    }
+
     [SerializeField, Range(2, 256)]
     int _ColorDepth = 256;
     public int ColorDepth
@@ -32,6 +42,7 @@ class DitherSettings
         get => _ColorDepth;
         set => _ColorDepth = Mathf.Clamp(value, 2, 256);
     }
+
     [SerializeField, Range(0.0f, 1.0f)]
     float _RandomRate = 0.0f;
     public float RandomRate
@@ -39,6 +50,7 @@ class DitherSettings
         get => _RandomRate;
         set => _RandomRate = Mathf.Clamp(0.0f, 1.0f, value);
     }
+
     [SerializeField, Min(1)]
     int _DownsampleRatio = 1;
     public int DownsampleRatio
@@ -197,6 +209,7 @@ class DitherRendererFeature : ScriptableRendererFeature
             using(new ProfilingScope(cmd, m_ProfilingSampler))
             {
                 m_DitherMaterial.SetFloat("_Strength", m_CurrentSettings.Strength);
+                m_DitherMaterial.SetFloat("_Brightness", m_CurrentSettings.Brightness);
                 m_DitherMaterial.SetInt("_ColorDepth", m_CurrentSettings.ColorDepth);
                 m_DitherMaterial.SetInt("_DownsampleRatio", m_CurrentSettings.DownsampleRatio);
                 m_DitherMaterial.SetFloat("_RandomRate", m_CurrentSettings.RandomRate);
